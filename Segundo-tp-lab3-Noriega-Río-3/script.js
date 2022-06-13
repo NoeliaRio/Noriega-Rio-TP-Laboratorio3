@@ -12,17 +12,18 @@ Vue.createApp({
             errorInvertir: '',
             errorNombre: '',
             errorDias: '',
+            Mensaje:'',
         }
     },
     methods:
     {
         calcularMonto()
         {
-            if (this.NombreApellido.trim===''&& this.Dias>=30)
+            if (this.NombreApellido.trim !==''&& this.Dias>=30)
             {
                 this.Comprobante= true;
-                this.errorDias= '';
-                this.errorNombre= '';
+                this.errorDias= ' ';
+                this.errorNombre= ' ';
             }
             else 
             {
@@ -32,20 +33,25 @@ Vue.createApp({
             if (this.Monto>=1000)
             {
                 this.Comprobantemonto= true;
-                this.errorInvertir= '';
+                this.errorInvertir= ' ';
             }
             else this.errorInvertir='Por favor ingrese un numero mayor a 1000';
-            if (this.Comprobante===true && this.Comprobantemonto===true)
-            this.MontoFinal = parseFloat(this.Monto) + this.Monto * (this.Dias / 360) * Intereses();   
+            if (this.Comprobante===true && this.Comprobantemonto===true) 
+            {
+                this.MontoFinal = parseFloat(this.Monto) + (this.Monto * ((this.Dias / 360)) * this.Porcentaje); 
+            }  
         },
-
-    
+        MensajeCalcular()
+        {
+           if(this.MontoFinal>0) this.Mensaje ='El monto de su inversión es: ' + '$' +  this.MontoFinal;
+           else this.Mensaje=' ';
+        },
         Intereses()
         {
-            if (this.Dias >=30 && this.Dias <= 60) this.Porcentaje = 40;
-            if (this.Dias > 60 && this.Dias <= 120) this.Porcentaje = 45;
-            if (this.Dias > 120 && this.Dias < 360) this.Porcentaje = 50;
-            if (this.Dias >= 360) this.Porcentaje = 65;
+            if (this.Dias >=30 && this.Dias <= 60) this.Porcentaje = (40/100);
+            if (this.Dias > 60 && this.Dias <= 120) this.Porcentaje = (45/100);
+            if (this.Dias > 120 && this.Dias < 360) this.Porcentaje = (50/100);
+            if (this.Dias >= 360) this.Porcentaje = (65/100);
         },
     }
 

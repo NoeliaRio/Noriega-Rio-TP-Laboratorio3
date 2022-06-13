@@ -45,10 +45,10 @@
             <p>{{errorDias}}</p>
         </div>
         <br>
-        <button type="submit" @click="calcularMonto" class="btnCalcular">Calcular</button>
-        
+        <button type="submit" id="btnCalcular"  v-on:click="calcularMonto" class="btnCalcular">Calcular</button>
         <button type="button" id="btnReinvertir">Reinvertir</button>
-        <p>{{'El monto de su inversión es: ' + '$' +  MontoFinal}}</p>
+        <p>{{Mensaje}}</p>
+        
         <br>
         <div class="Cuadro">
             <table>
