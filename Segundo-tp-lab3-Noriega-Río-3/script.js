@@ -8,7 +8,7 @@ Vue.createApp({
         }
     }
 
-}).mount('#app')
+}).mount('#app') // creando comentario
 
 let btnCalcular = document.getElementById('btnCalcular');
 let btnReinvertir = document.getElementById('btnReinvertir');
