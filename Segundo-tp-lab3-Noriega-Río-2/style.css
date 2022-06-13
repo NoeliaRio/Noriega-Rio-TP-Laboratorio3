@@ -1,0 +1,50 @@
+.titulo {
+    color: rgba(0, 0, 255, 0.664);
+    font-size: 50px;
+    font-family: 'Oswald', sans-serif;
+    text-decoration: rgba(0, 0, 255, 0.664) underline;
+    text-align: center;
+
+}
+#NombreApellido {
+    font-size: 20px;
+    margin: 10px 5px 10px 5px;
+    
+}
+
+#MontoInvertido {
+    font-size: 20px;
+    margin: 10px 5px 10px 20px;
+
+}
+#CantidadDias {
+    font-size: 20px;
+    margin: 10px 5px 10px 15px;
+
+}
+#button{
+    font-size: 18px;
+}
+[type="button"]{
+    font-size: 18px;
+    
+}
+
+.Background {
+    font-family: 'Lora', serif;
+    font-size: 25px;
+    
+}
+body{
+    background-color: rgb(220, 226, 235);
+    padding: 50px;
+
+ 
+}
+img{
+    width: 250px;
+    border-color: black;
+    border-style: double;
+    float: right;
+    margin: 10px;
+}

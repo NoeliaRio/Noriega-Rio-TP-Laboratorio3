@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Primer trabajo práctico</title>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding"> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Poppins:wght@300;800&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&family=Oswald&family=Poppins:wght@300;800&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+
+</head>
+<body>
+    <div class="Background">
+    <header>
+        <h1 class="titulo">Simulador de Plazo Fijo</h1>
+    </header>
+    <br>
+    <form id="formulario">
+        
+        <div class="NombreApellido">
+            <label for="NombreApellido">Nombre y Apellido:</label>
+            <input type="text" name="NombreApellido" id="NombreApellido" autofocus placeholder="Ingrese Nombre y Apellido">
+            <div class="errorNombre" id="errorNombre"></div>
+            <img src="chanchito.png">
+            <img src="deposito.png" >
+        </div>
+        <br>
+        <div class="MontoInvertido">
+            <label for="MontoInvertido">Monto a Invertir:</label>
+            <input type="number" name="MontoInvertido" id="MontoInvertido" autofocus placeholder= "Monto Mayor a 1000" required min="1000">
+            <div class="errorInvertir" id="errorInvertir"></div>
+        </div> 
+        <br>
+        <div class="CantidadDias"> 
+            <label for="CantidadDias">Cantidad de días:</label>
+            <input type="number" name="CantidadDias" id="CantidadDias" autofocus placeholder= "Mayor a 30 días" required min="30" max="360" >
+            <div class="errorDias" id="errorDias"></div>
+        </div>
+        <br>
+        <button type="button" id="btnCalcular">Calcular</button>
+        <button type="button" id="btnReinvertir">Reinvertir</button>
+        <div class="CalcularInversion" id="CalcularInversion"></div>
+        <br>
+        <div class="Cuadro">
+            <table>
+                <tr>
+                    <th>Período</th>
+                    <th>Monto Inicial</th>
+                    <th>Monto Final</th>
+                </tr>
+                <tr class="Periodo1">
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="Periodo2">
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="Periodo3">
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="Periodo4">
+                    <td>4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    </div>
+   
+</body>
+</html>
