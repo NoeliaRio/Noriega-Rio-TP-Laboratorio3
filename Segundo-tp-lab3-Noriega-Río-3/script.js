@@ -1,14 +1,38 @@
 
 Vue.createApp({
-    data()
-    {
-        return
-        {
-           
+    data() {
+        return {
+            NombreApellido: '',
+            MontoInvertido: 0,
+            Dias: 0,
+            Comprobante: false,
+            Comprobantemonto: false,
+            MontoFinal: 0,
+            Porcentaje: 0,
         }
+    },
+    methods:
+    {
+        calcularMonto()
+        {
+            if (this.NombreApellido.trim===''&& this.Dias>=30)this.Comprobante=true;
+            else 
+            if (this.Monto>=1000)this.Comprobantemonto=true;
+
+
+        },
+
+    
+        Intereses()
+        {
+            if (this.Dias >= 30 && this.Dias <= 60) this.Porcentaje = 40;
+            if (this.Dias > 60 && this.Dias <= 120) this.Porcentaje = 45;
+            if (this.Dias > 120 && this.Dias < 360) this.Porcentaje = 50;
+            if (this.Dias >= 360) this.Porcentaje = 65;
+        },
     }
 
-}).mount('#app') // creando comentario
+}).mount('#app')
 
 let btnCalcular = document.getElementById('btnCalcular');
 let btnReinvertir = document.getElementById('btnReinvertir');
@@ -74,28 +98,7 @@ function MostrarInversion()
         document.getElementById("CalcularInversion").appendChild(etiquetaP);
     }
 }
-function intereses(Dias)
-{
-    let Porcentaje = 0;
-    
-    if(Dias >= 30 &&  Dias <= 60)
-    {
-        Porcentaje = (40 / 100);
-    }
-    else if (Dias >= 61 &&  Dias <= 120)
-    {
-        Porcentaje = (45 / 100);
-    }
-    else if(Dias >= 121 &&  Dias < 360)
-    {
-        Porcentaje = (50 / 100);
-    }
-    else
-    {
-        Porcentaje = (60 / 100);
-    }
-    return Porcentaje;
-}
+
 function MostrarCuadro(Montos)
 {
     document.querySelector("Cuadro");

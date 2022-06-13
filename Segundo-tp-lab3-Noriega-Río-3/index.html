@@ -27,7 +27,7 @@
         
         <div class="NombreApellido">
             <label for="NombreApellido">Nombre y Apellido:</label>
-            <input type="text" name="NombreApellido" id="NombreApellido" autofocus placeholder="Ingrese Nombre y Apellido">
+            <input type="text" name="NombreApellido" id="NombreApellido" autofocus placeholder="Ingrese Nombre y Apellido" required v-model="NombreApellido">
             <div class="errorNombre" id="errorNombre"></div>
             <img src="chanchito.png">
             <img src="deposito.png" >
@@ -35,13 +35,13 @@
         <br>
         <div class="MontoInvertido">
             <label for="MontoInvertido">Monto a Invertir:</label>
-            <input type="number" name="MontoInvertido" id="MontoInvertido" autofocus placeholder= "Monto Mayor a 1000" required min="1000">
+            <input type="number" name="MontoInvertido" id="MontoInvertido" autofocus placeholder= "Monto Mayor a 1000" required min="1000" required v-model="MontoInvertido">
             <div class="errorInvertir" id="errorInvertir"></div>
         </div> 
         <br>
         <div class="CantidadDias"> 
             <label for="CantidadDias">Cantidad de días:</label>
-            <input type="number" name="CantidadDias" id="CantidadDias" autofocus placeholder= "Mayor a 30 días" required min="30" max="360" >
+            <input type="number" name="CantidadDias" id="CantidadDias" autofocus placeholder= "Mayor a 30 días" required min="30" max="360" required v-model="CantidadDias">
             <div class="errorDias" id="errorDias"></div>
         </div>
         <br>
