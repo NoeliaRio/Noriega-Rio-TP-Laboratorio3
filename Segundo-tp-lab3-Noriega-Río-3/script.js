@@ -9,23 +9,40 @@ Vue.createApp({
             Comprobantemonto: false,
             MontoFinal: 0,
             Porcentaje: 0,
+            errorInvertir: '',
+            errorNombre: '',
+            errorDias: '',
         }
     },
     methods:
     {
         calcularMonto()
         {
-            if (this.NombreApellido.trim===''&& this.Dias>=30)this.Comprobante=true;
+            if (this.NombreApellido.trim===''&& this.Dias>=30)
+            {
+                this.Comprobante= true;
+                this.errorDias= '';
+                this.errorNombre= '';
+            }
             else 
-            if (this.Monto>=1000)this.Comprobantemonto=true;
-
-
+            {
+                this.errorDias='Por favor ingrese una cantidad de días mayor a 30';
+                this.errorNombre='Por favor ingrese su nombre y apellido';
+            }
+            if (this.Monto>=1000)
+            {
+                this.Comprobantemonto= true;
+                this.errorInvertir= '';
+            }
+            else this.errorInvertir='Por favor ingrese un numero mayor a 1000';
+            if (this.Comprobante===true && this.Comprobantemonto===true)
+            this.MontoFinal = parseFloat(this.Monto) + this.Monto * (this.Dias / 360) * intereses();   
         },
 
     
         Intereses()
         {
-            if (this.Dias >= 30 && this.Dias <= 60) this.Porcentaje = 40;
+            if (this.Dias >=30 && this.Dias <= 60) this.Porcentaje = 40;
             if (this.Dias > 60 && this.Dias <= 120) this.Porcentaje = 45;
             if (this.Dias > 120 && this.Dias < 360) this.Porcentaje = 50;
             if (this.Dias >= 360) this.Porcentaje = 65;
@@ -38,66 +55,6 @@ let btnCalcular = document.getElementById('btnCalcular');
 let btnReinvertir = document.getElementById('btnReinvertir');
 btnCalcular.addEventListener('click', () =>{MostrarInversion();})
 btnReinvertir.addEventListener('click', () =>{Reinvertir();})
-function Monto()
-{
-    let Monto = document.getElementById('MontoInvertido').value;
-    return Monto
-}
-
- function calcularMonto(Monto)
-{  
-    let NombreApellido = document.getElementById('NombreApellido').value;
-    let Dias = document.getElementById('CantidadDias').value;
-    let comprobante=false;
-    let comprobantemonto=false;
-    let MontoFinal;
-    
-    if (NombreApellido.trim() ==="")
-    { 
-        document.getElementById("errorNombre").innerHTML="Por favor ingrese su nombre y apellido"; 
-        comprobante=false;
-        document.getElementById("NombreApellido").focus();
-    }else 
-    {
-        comprobante=true;
-        document.getElementById("errorNombre").innerHTML="";
-    }
-    
-    if (Monto<999)
-    {
-        document.getElementById("errorInvertir").innerHTML="Por favor ingrese un numero mayor a 1000";
-        comprobantemonto = false;
-        document.getElementById("MontoInvertido").focus();
-    }else 
-    {
-        comprobantemonto=true;
-        document.getElementById("errorInvertir").innerHTML="";
-    }
-    if (Dias <=29||Dias==="")
-    {
-        document.getElementById("errorDias").innerHTML="Por favor ingrese una cantidad de días mayor a 30";
-        comprobante=false;
-        document.getElementById("CantidadDias").focus();
-    }else 
-    {
-        document.getElementById("errorDias").innerHTML="";
-        if (comprobante===true && comprobantemonto===true)
-        {
-            MontoFinal = parseFloat(Monto) + Monto * (Dias / 360) * intereses(Dias);   
-        }
-    }
-    return MontoFinal;
-}
-function MostrarInversion()
-{
-    let MontoFinal= calcularMonto(Monto());
-    if(MontoFinal>0)
-    {
-        let etiquetaP = document.createElement('p');
-        etiquetaP.appendChild(document.createTextNode("El monto de su inversión es: " + "$" +  MontoFinal));
-        document.getElementById("CalcularInversion").appendChild(etiquetaP);
-    }
-}
 
 function MostrarCuadro(Montos)
 {
