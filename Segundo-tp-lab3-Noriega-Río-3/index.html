@@ -45,7 +45,7 @@
             <p>{{errorDias}}</p>
         </div>
         <br>
-        <button v-on:click="calcularMonto" class="btnCalcular">Calcular</button>
+        <button type="submit" @click="calcularMonto" class="btnCalcular">Calcular</button>
         
         <button type="button" id="btnReinvertir">Reinvertir</button>
         <p>{{'El monto de su inversión es: ' + '$' +  MontoFinal}}</p>
