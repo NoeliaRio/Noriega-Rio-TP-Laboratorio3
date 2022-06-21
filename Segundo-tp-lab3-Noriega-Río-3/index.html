@@ -11,11 +11,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&family=Oswald&family=Poppins:wght@300;800&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue@3" defer></script>
     <script src="script.js" defer></script>
     
 
 </head>
+
 <body>
     <div id="app">
     <div class="Background">
@@ -23,7 +24,8 @@
         <h1 class="titulo">Simulador de Plazo Fijo</h1>
     </header>
     <br>
-    <form id="formulario">
+    <main>
+    <form id="formulario" action="">
         
         <div class="NombreApellido">
             <label for="NombreApellido">Nombre y Apellido:</label>
@@ -35,13 +37,13 @@
         <br>
         <div class="MontoInvertido">
             <label for="MontoInvertido">Monto a Invertir:</label>
-            <input type="number" name="MontoInvertido" id="MontoInvertido" autofocus placeholder= "Monto Mayor a 1000" required min="1000" required v-model="MontoInvertido">
+            <input type="number" name="MontoInvertido" id="MontoInvertido" autofocus placeholder= "Monto Mayor a 1000" required min="1000" required v-model.number="MontoInvertido">
             <p>{{errorInvertir}}</p>
         </div> 
         <br>
-        <div class="CantidadDias"> 
-            <label for="CantidadDias">Cantidad de días:</label>
-            <input type="number" name="CantidadDias" id="CantidadDias" autofocus placeholder= "Mayor a 30 días" required min="30" max="360" required v-model="CantidadDias">
+        <div class="Dias"> 
+            <label for="Dias"> Cantidad de días:</label>
+            <input type="number" name="Dias" id="Dias" autofocus placeholder= "Mayor a 30 días" required min="30" max="360" required v-model.number="Dias">
             <p>{{errorDias}}</p>
         </div>
         <br>
@@ -81,7 +83,7 @@
         </div>
     </form>
     </div>
-   
+    </main>
     </div>
 </body> 
 

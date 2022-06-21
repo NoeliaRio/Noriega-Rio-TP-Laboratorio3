@@ -1,5 +1,5 @@
 
-Vue.createApp({
+let app = Vue.createApp({
     data() {
         return {
             NombreApellido: '',
@@ -17,8 +17,14 @@ Vue.createApp({
     },
     methods:
     {
+
         calcularMonto()
         {
+            if (this.Dias >=30 && this.Dias <= 60) this.Porcentaje = (40/100);
+            if (this.Dias > 60 && this.Dias <= 120) this.Porcentaje = (45/100);
+            if (this.Dias > 120 && this.Dias < 360) this.Porcentaje = (50/100);
+            if (this.Dias >= 360) this.Porcentaje = (65/100);
+
             if (this.NombreApellido.trim !==''&& this.Dias>=30)
             {
                 this.Comprobante= true;
@@ -30,7 +36,7 @@ Vue.createApp({
                 this.errorDias='Por favor ingrese una cantidad de días mayor a 30';
                 this.errorNombre='Por favor ingrese su nombre y apellido';
             }
-            if (this.Monto>=1000)
+            if (this.MontoInvertido>=1000)
             {
                 this.Comprobantemonto= true;
                 this.errorInvertir= ' ';
@@ -38,22 +44,14 @@ Vue.createApp({
             else this.errorInvertir='Por favor ingrese un numero mayor a 1000';
             if (this.Comprobante===true && this.Comprobantemonto===true) 
             {
-                this.MontoFinal = parseFloat(this.Monto) + (this.Monto * ((this.Dias / 360)) * this.Porcentaje); 
-            }  
-        },
-        MensajeCalcular()
-        {
-           if(this.MontoFinal>0) this.Mensaje ='El monto de su inversión es: ' + '$' +  this.MontoFinal;
-           else this.Mensaje=' ';
-        },
-        Intereses()
-        {
-            if (this.Dias >=30 && this.Dias <= 60) this.Porcentaje = (40/100);
-            if (this.Dias > 60 && this.Dias <= 120) this.Porcentaje = (45/100);
-            if (this.Dias > 120 && this.Dias < 360) this.Porcentaje = (50/100);
-            if (this.Dias >= 360) this.Porcentaje = (65/100);
-        },
+                this.MontoFinal = parseFloat(this.MontoInvertido) + (this.MontoInvertido * ((this.Dias / 360)) * this.Porcentaje); 
+            } 
+            if(this.MontoFinal>0) this.Mensaje ='El monto de su inversión es: ' + '$' +  this.MontoFinal;
+                else this.Mensaje=' '; 
+        }
+        
     }
 
-}).mount('#app')
+});
+app.mount('#app');
 
